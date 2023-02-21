@@ -9,7 +9,7 @@ setup(
     version=VERSION,
 	entry_points={
         'console_scripts': [
-            'startwork=startwork.main:main'
+            'work=startwork.main:main'
         ]
     },
     author="JorbFreire",
