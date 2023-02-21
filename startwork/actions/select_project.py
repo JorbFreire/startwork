@@ -12,12 +12,16 @@ def select_project(project_list_path):
   questions = [
     List(
       'selected_project',
-      message="Delete a project",
+      message="Selete a project to work on",
       choices=projects_keys,
     )
   ]
 
   selected_project_name = prompt(questions)["selected_project"]
+  if not selected_project_name:
+    print("Unknown cause error: no project selected")
+    return
+
   print(f'Starting to work on "{selected_project_name}"')
 
   selected_project = list(

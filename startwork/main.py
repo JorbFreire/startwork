@@ -48,7 +48,7 @@ def main():
     return
   
   print(f'Unknown option: {option}')
-  print('Try on of the following:')
+  print('Try one of the following:')
   get_help()
 
 
