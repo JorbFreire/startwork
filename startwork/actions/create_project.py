@@ -41,9 +41,11 @@ def create_project(project_list_path):
   ]
 
   new_project = prompt(questions)
-  projects_list.append(new_project)
+  if new_project:
+    projects_list.append(new_project)
 
   with open(project_list_path, "w") as outfile:
     outfile.write(json.dumps(projects_list, indent=4))
 
-  print("New project created!")
+  if new_project:
+    print("New project created!")
