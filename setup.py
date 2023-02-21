@@ -1,6 +1,7 @@
 from setuptools import setup, find_packages
+from src.constants.__version__ import __version__
 
-VERSION = '0.0.3'
+VERSION = __version__
 DESCRIPTION = 'Fast change between projects'
 
 setup(
