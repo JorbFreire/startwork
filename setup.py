@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-from src.constants.__version__ import __version__
+from startwork.constants.__version__ import __version__
 
 VERSION = __version__
 DESCRIPTION = 'Fast change between projects'
@@ -9,7 +9,7 @@ setup(
     version=VERSION,
 	entry_points={
         'console_scripts': [
-            'startwork=src.main:main'
+            'startwork=startwork.main:main'
         ]
     },
     author="JorbFreire",
@@ -18,7 +18,7 @@ setup(
     include_package_data=True,
     packages=find_packages(),
     install_requires=["inquirer==3.1.2"],
-    keywords=['python'],
+    keywords=['python', 'inquirer'],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",

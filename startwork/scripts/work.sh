@@ -1,6 +1,6 @@
 #!/usr/bin/bash
-source $TOOLING_DIR/src/scripts/try_node.sh
-source $TOOLING_DIR/src/scripts/try_python.sh
+source $TOOLING_DIR/startwork/scripts/try_node.sh
+source $TOOLING_DIR/startwork/scripts/try_python.sh
 
 cd "$1"
 

@@ -1,5 +1,5 @@
 include *.py
-include src/projects_list.json
-recursive-include src/constants *.py
-recursive-include src/actions *.py
-recursive-include src/scripts *.sh
+include startwork/projects_list.json
+recursive-include startwork/constants *.py
+recursive-include startwork/actions *.py
+recursive-include startwork/scripts *.sh
