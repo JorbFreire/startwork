@@ -1,11 +1,16 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.1'
+VERSION = '0.0.3'
 DESCRIPTION = 'Fast change between projects'
 
 setup(
     name="startwork",
     version=VERSION,
+	entry_points={
+        'console_scripts': [
+            'startwork=src.main:main'
+        ]
+    },
     author="JorbFreire",
     author_email="",
     description=DESCRIPTION,

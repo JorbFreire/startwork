@@ -1,11 +1,10 @@
 import sys
-from os import getcwd
 from pathlib import Path
 from subprocess import check_call
 
-from actions.select_project import select_project
-from actions.create_project import create_project
-from actions.delete_project import delete_project
+from .actions.select_project import select_project
+from .actions.create_project import create_project
+from .actions.delete_project import delete_project
 
 project_list_path = Path(__file__).parent / "projects_list.json"
 scripts_path = Path(__file__).parent / "scripts" / "work.sh"
