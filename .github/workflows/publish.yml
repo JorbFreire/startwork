@@ -16,8 +16,5 @@ jobs:
     - name: Install Twine
       run: pip3 install twine
 
-    - name: Upload package to TestPyPi server
-      run: twine upload -r testpypi -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} dist/*
-
     - name: Upload package to PyPi production server
       run: twine upload -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }} dist/*
