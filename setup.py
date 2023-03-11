@@ -10,7 +10,7 @@ with open(path.join(here, "README.md"), encoding="utf-8") as fh:
 
 VERSION = __version__
 DESCRIPTION = 'Small CLI to easier start and swap between projects in different stacks.'
-LONG_DESCRIPTION = "" | long_description
+LONG_DESCRIPTION = long_description
 
 setup(
     name="startwork",
