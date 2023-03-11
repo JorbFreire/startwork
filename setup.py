@@ -29,7 +29,7 @@ setup(
     install_requires=["inquirer==3.1.2"],
     keywords=['python', 'inquirer', 'cli', 'dev-tools', 'tooling'],
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "Operating System :: Unix",
