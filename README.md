@@ -4,6 +4,8 @@ Small CLI to easier start and swap between projects in different stacks.
 
 Published to [PyPi](https://pypi.org/project/startwork/)
 
+[Repo Link](https://github.com/JorbFreire/startwork)
+
 
 ## motivation
 
