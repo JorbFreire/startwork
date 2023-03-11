@@ -20,12 +20,16 @@ def main():
   if len(sys.argv) < 2:
     selected_project = select_project(project_list_path)
     start_work_script = [scripts_path, selected_project["project_path"]]
+    requirementsPath = Path('requirements.txt')
 
-    for line in open('requirements.txt'):
-      requirement_name = line.split("=")
-      if requirement_name == "flask":
-        start_work_script.append("flask")
-        break
+    print("is file?")
+    print(requirementsPath.is_file())
+    if requirementsPath.is_file():
+      for line in open('requirements.txt'):
+        requirement_name = line.split("=")
+        if requirement_name == "flask":
+          start_work_script.append("flask")
+          break
 
     check_call(start_work_script)
     return
