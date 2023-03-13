@@ -16,8 +16,8 @@ def get_help():
   print("  create: create a new project\n") 
   print("  delete: delete a project\n") 
 
-def main():
-  if len(sys.argv) < 2:
+def main(argv) -> int:
+  if len(argv) < 2:
     selected_project = select_project(project_list_path)
     start_work_script = [scripts_path, selected_project["project_path"]]
     requirementsPath = Path('requirements.txt')
@@ -35,7 +35,7 @@ def main():
     return
 
 
-  option = sys.argv[1]
+  option = argv[1]
 
   if option == "create":
     return create_project(project_list_path)
@@ -45,16 +45,17 @@ def main():
 
   if option == "--version":
     print(f'version: {__version__}\n')  
-    return
+    return 0
 
   if option == "--help":
     get_help()
-    return
+    return 0
   
   print(f'Unknown option: {option}')
   print('Try one of the following:')
   get_help()
+  return 1
 
 
 if __name__ == "__main__":
-  main()
+  main(sys.argv)
