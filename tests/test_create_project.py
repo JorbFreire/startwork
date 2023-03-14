@@ -38,7 +38,10 @@ class TestCreateProject(unittest.TestCase):
     with open(self.project_list_path, "r") as file:
       test_list = json.load(file)
 
-    assert test_list == prompt_mock_value[0]
+    assert test_list == [prompt_mock_value[0]]
+    
+    with open(self.project_list_path, "w") as outfile:
+      outfile.write(json.dumps([], indent=4))
 
   # @patch(
   #   "startwork.actions.create_project.prompt",
