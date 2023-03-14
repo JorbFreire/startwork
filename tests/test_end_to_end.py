@@ -1,5 +1,5 @@
 from startwork.main import main
-from startwork.constants import __version__
+from startwork.constants.__version__ import __version__
 
 class TestEndToEnd:
   expected_help_output = f'avaliable options:\n  default: run\n\n  create: create a new project\n\n  delete: delete a project\n\n'
@@ -18,7 +18,7 @@ class TestEndToEnd:
     assert err == ''
 
   def test_version(self, capsys):
-    main(["--version"])
+    main(["", "--version"])
     out, err = capsys.readouterr()
-    assert out == __version__
+    assert out == f'version: {__version__}\n\n'
     assert err == ''
