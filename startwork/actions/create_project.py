@@ -2,16 +2,16 @@ import json
 from os import getcwd
 from inquirer import errors, Text, Path, prompt
 
-def raiseError(reason):
+def _raiseError(reason):
   raise errors.ValidationError('', reason=reason)
 
-def validate_name(current, projects_list):
+def _validate_name(current, projects_list):
   if len(current) < 1:
-    raiseError("Project name can't be empy")
+    _raiseError("Project name can't be empty")
 
   for project in projects_list:
     if project["name"] == current:
-      raiseError(f'Name "{current}" alredy in use')
+      _raiseError(f'Name "{current}" alredy in use')
 
   return True
 
@@ -25,7 +25,7 @@ def create_project(project_list_path):
     Text(
       'name',
       message="What's the project name?",
-      validate=lambda answers, current: validate_name(
+      validate=lambda answers, current: _validate_name(
         current,
         projects_list
       )
