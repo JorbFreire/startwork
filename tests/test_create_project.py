@@ -7,7 +7,7 @@ from pathlib import Path
 import json
 from inquirer.errors import ValidationError as InquirerValidationError
 
-from startwork.actions.create_project import create_project, _validate_name
+from startwork.actions.create_project import create_project, _validate_name, _raiseError
 
 prompt_mock_values = [
   {"name": "sample_name1", "project_path": "/home"},
@@ -24,7 +24,8 @@ class TestCreateProject(unittest.TestCase):
     if error == "empty":
       return InquirerValidationError("", reason="Project name can't be empty")
     if error == "alredy_used" and len(current) > 1:
-      return InquirerValidationError("", reason=f'Name "{current}" alredy in use') 
+      return InquirerValidationError("", reason=f'Name "{current}" alredy in use')
+    return InquirerValidationError("", reason=error)
 
   @pytest.fixture(autouse=True)
   def _capsys(self, capsys):
@@ -57,6 +58,17 @@ class TestCreateProject(unittest.TestCase):
 
     with open(self.project_list_path, "r") as file:
       assert json.load(file) == []
+
+  def test_raiseError(self):
+    error_string = "sample_error"
+    try:
+      _raiseError(error_string)
+      assert False
+    except Exception as exception:
+      expected_exception = self._get_error(error_string)
+      assert exception.__module__ == expected_exception.__module__
+      assert exception.reason == expected_exception.reason
+      assert exception.value == expected_exception.value
 
   def test_validate_name_happy_path(self):
     try:
