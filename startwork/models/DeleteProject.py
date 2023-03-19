@@ -1,7 +1,9 @@
 import json
 from inquirer import List, Confirm, prompt
 
-class DeleteProject:
+from .GenericProjectActionsModel import GenericProjectActionsModel
+
+class DeleteProject(GenericProjectActionsModel):
   @staticmethod
   def run(project_list_path):
     projects_list = []
@@ -30,6 +32,8 @@ class DeleteProject:
     ]
 
     answers = prompt(questions)
+
+    DeleteProject._validate_selected_project_name(answers["selected_project"])
     
     if answers['delete_confirmed'] and answers['delete_confirmed2']:
       raise Exception("Deletion Aborted!")

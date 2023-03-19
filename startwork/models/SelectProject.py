@@ -1,5 +1,6 @@
 import json
 from inquirer import List, prompt
+
 from .GenericProjectActionsModel import GenericProjectActionsModel
 
 class SelectProject(GenericProjectActionsModel):
@@ -21,9 +22,7 @@ class SelectProject(GenericProjectActionsModel):
     ]
 
     selected_project_name = prompt(questions)["selected_project"]
-    if not selected_project_name:
-      print("Unknown cause error: no project selected")
-      return
+    SelectProject._validate_selected_project_name(selected_project_name)
 
     print(f'Starting to work on "{selected_project_name}"')
 

@@ -15,3 +15,8 @@ class GenericProjectActionsModel:
         GenericProjectActionsModel._raiseError(f'Name "{current}" alredy in use')
 
     return True
+  
+  @staticmethod
+  def _validate_selected_project_name(selected_project_name):
+    if not selected_project_name:
+      raise Exception("Unknown cause error: no project selected")
