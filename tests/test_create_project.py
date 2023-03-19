@@ -6,7 +6,7 @@ from copy import deepcopy, copy
 from pathlib import Path
 import json
 
-from startwork.actions.create_project import CreateProject
+from startwork.models.CreateProject import CreateProject
 
 prompt_mock_values = [
   {"name": "sample_name1", "project_path": "/home"},
@@ -28,7 +28,7 @@ class TestCreateProject(unittest.TestCase):
     assert callable(CreateProject.run)
 
   @patch(
-    "startwork.actions.create_project.prompt",
+    "startwork.models.CreateProject.prompt",
     return_value=prompt_mock_values[0]
   )
   def test_happy_path(self, mock_inquirer_prompt):

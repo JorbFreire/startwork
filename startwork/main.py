@@ -2,9 +2,9 @@ import sys
 from pathlib import Path
 from subprocess import check_call
 
-from .actions.select_project import select_project
-from .actions.create_project import CreateProject
-from .actions.delete_project import delete_project
+from .models.select_project import select_project
+from .models.CreateProject import CreateProject
+from .models.delete_project import delete_project
 from .constants.__version__ import __version__
 
 project_list_path = Path(__file__).parent / "projects_list.json"

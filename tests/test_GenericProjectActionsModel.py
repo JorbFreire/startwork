@@ -1,6 +1,6 @@
 from pprint import pprint
 
-from startwork.actions.GenericProjectActionsModel import GenericProjectActionsModel
+from startwork.models.GenericProjectActionsModel import GenericProjectActionsModel
 from inquirer.errors import ValidationError as InquirerValidationError
 
 class TestGenericProjectActionsModel():
