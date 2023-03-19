@@ -5,7 +5,7 @@ from .GenericProjectActionsModel import GenericProjectActionsModel
 
 class CreateProject(GenericProjectActionsModel):
   @staticmethod
-  def run(self, project_list_path):
+  def run(project_list_path):
     projects_list = []
 
     with open(project_list_path, 'r') as openfile:
