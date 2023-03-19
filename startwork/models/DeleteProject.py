@@ -35,7 +35,7 @@ class DeleteProject(GenericProjectActionsModel):
 
     DeleteProject._validate_selected_project_name(answers["selected_project"])
     
-    if answers['delete_confirmed'] and answers['delete_confirmed2']:
+    if not (answers['delete_confirmed'] and answers['delete_confirmed2']):
       raise Exception("Deletion Aborted!")
 
     projects_list = list(
