@@ -1,51 +1,40 @@
 import json
 from os import getcwd
-from inquirer import errors, Text, Path, prompt
+from inquirer import Text, Path, prompt
+from .GenericProjectActionsModel import GenericProjectActionsModel
 
-def _raiseError(reason):
-  raise errors.ValidationError('', reason=reason)
+class CreateProject(GenericProjectActionsModel):
+  def run(self, project_list_path):
+    projects_list = []
 
-def _validate_name(current, projects_list):
-  if len(current) < 1:
-    _raiseError("Project name can't be empty")
+    with open(project_list_path, 'r') as openfile:
+      projects_list = json.load(openfile)
 
-  for project in projects_list:
-    if project["name"] == current:
-      _raiseError(f'Name "{current}" alredy in use')
+    questions = [
+      Text(
+        'name',
+        message="What's the project name?",
+        validate=lambda answers, current: self._validate_name(
+          current,
+          projects_list
+        )
+      ),
+      Path(
+        'project_path',
+        message="Where is the project located?",
+        path_type=Path.DIRECTORY,
+        exists=True,
+        normalize_to_absolute_path=True,
+        default=getcwd()
+      ),
+    ]
 
-  return True
+    new_project = prompt(questions)
+    if new_project:
+      projects_list.append(new_project)
 
-def create_project(project_list_path):
-  projects_list = []
+    with open(project_list_path, "w") as outfile:
+      outfile.write(json.dumps(projects_list, indent=4))
 
-  with open(project_list_path, 'r') as openfile:
-    projects_list = json.load(openfile)
-
-  questions = [
-    Text(
-      'name',
-      message="What's the project name?",
-      validate=lambda answers, current: _validate_name(
-        current,
-        projects_list
-      )
-    ),
-    Path(
-      'project_path',
-      message="Where is the project located?",
-      path_type=Path.DIRECTORY,
-      exists=True,
-      normalize_to_absolute_path=True,
-      default=getcwd()
-    ),
-  ]
-
-  new_project = prompt(questions)
-  if new_project:
-    projects_list.append(new_project)
-
-  with open(project_list_path, "w") as outfile:
-    outfile.write(json.dumps(projects_list, indent=4))
-
-  if new_project:
-    print("New project created!")
+    if new_project:
+      print("New project created!")

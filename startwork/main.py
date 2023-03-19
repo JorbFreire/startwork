@@ -3,7 +3,7 @@ from pathlib import Path
 from subprocess import check_call
 
 from .actions.select_project import select_project
-from .actions.create_project import create_project
+from .actions.create_project import CreateProject
 from .actions.delete_project import delete_project
 from .constants.__version__ import __version__
 
@@ -38,7 +38,7 @@ def main(argv) -> int:
   option = argv[1]
 
   if option == "create":
-    return create_project(project_list_path)
+    return CreateProject.run(project_list_path)
 
   if option == "delete":
     return delete_project(project_list_path)
