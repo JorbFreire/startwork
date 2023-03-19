@@ -9,16 +9,24 @@ import json
 from startwork.models.CreateProject import CreateProject
 from startwork.models.DeleteProject import DeleteProject
 
-prompt_mock_values = [
+from pprint import pprint
+
+mock_values_create = [
   {"name": "sample_name1", "project_path": "/home"},
   {"name": "sample_name2", "project_path": "/home"},
   {"name": "sample_name3", "project_path": "/home"},
 ]
 
+mock_values_delete = [{
+  "selected_project": value_create["name"],
+  "delete_confirmed": True,
+  "delete_confirmed2": True,
+} for value_create in mock_values_create ]
+
 class TestDeleteProject(unittest.TestCase):
   # CLASS SETUP
   project_list_path = Path(__file__).parent / "projects_list.json"
-  prompt_mock_values = deepcopy(prompt_mock_values)
+  mock_values_create = deepcopy(mock_values_create)
 
   @pytest.fixture(autouse=True)
   def _capsys(self, capsys):
@@ -30,34 +38,48 @@ class TestDeleteProject(unittest.TestCase):
 
   @patch(
     "startwork.models.CreateProject.prompt",
-    return_value=prompt_mock_values[0]
+    return_value=mock_values_create[0]
   )
   @patch(
     "startwork.models.DeleteProject.prompt",
-    return_value=prompt_mock_values[0]
+    return_value=mock_values_delete[0]
   )
-  def test_happy_path(self, mock_inquirer_prompt):
+  def test_happy_path(
+    self,
+    mock_inquirer_prompt_delete,
+    mock_inquirer_prompt_create
+  ):
     # set json for the test
-    for prompt_value in prompt_mock_values:
-      mock_inquirer_prompt.return_value["name"] = copy(prompt_value["name"])
-      mock_inquirer_prompt.return_value["project_path"] = copy(prompt_value["project_path"])
+    for prompt_value in mock_values_create:
+      mock_inquirer_prompt_create.return_value["name"] = copy(prompt_value["name"])
+      mock_inquirer_prompt_create.return_value["project_path"] = copy(prompt_value["project_path"])
 
       CreateProject.run(self.project_list_path)
 
     with open(self.project_list_path, "r") as file:
-      assert json.load(file) == prompt_mock_values
+      result = json.load(file)
+      assert result == mock_values_create
+    # clean output
+    self.capsys.readouterr()
 
     # do the test it self
-    for prompt_value in prompt_mock_values:
-      mock_inquirer_prompt.return_value["name"] = copy(prompt_value["name"])
-      mock_inquirer_prompt.return_value["project_path"] = copy(prompt_value["project_path"])
+    expected_result = mock_values_create
+    for prompt_value in mock_values_delete:
+      project_name = prompt_value["selected_project"]
+      mock_inquirer_prompt_delete.return_value["selected_project"] = copy(project_name)
 
       DeleteProject.run(self.project_list_path)
 
       out, err = self.capsys.readouterr()
-      assert out == f'Project named as "{prompt_mock_values["name"]}" has been deleted!'
+      assert out == f'Project named as "{project_name}" has been deleted!\n'
       assert err == ""
       # asset comparing array removing each item at time
-
-    with open(self.project_list_path, "r") as file:
-      assert json.load(file) == []
+      with open(self.project_list_path, "r") as file:
+        expected_result = list(
+          filter(
+            lambda mock_value: mock_value["name"] != project_name,
+            expected_result
+          )
+        )
+        result = json.load(file)
+        assert result == expected_result
