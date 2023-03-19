@@ -4,6 +4,7 @@ from inquirer import Text, Path, prompt
 from .GenericProjectActionsModel import GenericProjectActionsModel
 
 class CreateProject(GenericProjectActionsModel):
+  @staticmethod
   def run(self, project_list_path):
     projects_list = []
 
@@ -14,7 +15,7 @@ class CreateProject(GenericProjectActionsModel):
       Text(
         'name',
         message="What's the project name?",
-        validate=lambda answers, current: self._validate_name(
+        validate=lambda answers, current: CreateProject._validate_name(
           current,
           projects_list
         )

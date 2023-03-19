@@ -38,7 +38,7 @@ class TestCreateProject(unittest.TestCase):
 
       # I have no fucking idea why but this method is requiring to
       # place the only argument of "run" method as second argument
-      CreateProject.run(None, self.project_list_path)
+      CreateProject.run(self.project_list_path)
       out, err = self.capsys.readouterr()
       assert out == "New project created!\n"
       assert err == ""

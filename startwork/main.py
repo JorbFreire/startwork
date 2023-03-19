@@ -2,9 +2,9 @@ import sys
 from pathlib import Path
 from subprocess import check_call
 
-from .models.select_project import select_project
+from .models.SelectProject import SelectProject
 from .models.CreateProject import CreateProject
-from .models.delete_project import delete_project
+from .models.DeleteProject import DeleteProject
 from .constants.__version__ import __version__
 
 project_list_path = Path(__file__).parent / "projects_list.json"
@@ -18,7 +18,7 @@ def get_help():
 
 def main(argv) -> int:
   if len(argv) < 2:
-    selected_project = select_project(project_list_path)
+    selected_project = SelectProject(project_list_path)
     start_work_script = [scripts_path, selected_project["project_path"]]
     requirementsPath = Path('requirements.txt')
 
@@ -41,7 +41,7 @@ def main(argv) -> int:
     return CreateProject.run(project_list_path)
 
   if option == "delete":
-    return delete_project(project_list_path)
+    return DeleteProject(project_list_path)
 
   if option == "--version":
     print(f'version: {__version__}\n')  
