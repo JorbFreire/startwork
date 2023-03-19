@@ -36,8 +36,6 @@ class TestCreateProject(unittest.TestCase):
       mock_inquirer_prompt.return_value["name"] = copy(prompt_value["name"])
       mock_inquirer_prompt.return_value["project_path"] = copy(prompt_value["project_path"])
 
-      # I have no fucking idea why but this method is requiring to
-      # place the only argument of "run" method as second argument
       CreateProject.run(self.project_list_path)
       out, err = self.capsys.readouterr()
       assert out == "New project created!\n"
