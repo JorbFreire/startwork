@@ -76,3 +76,19 @@ Show current version
 work --help
 ```
 Show currently available CLI options
+
+## Next goals
+
+- [ ] Handle multiple environments in a single folder
+  - [ ] Detect multiple environments
+  - [ ] Let you choose the environment that will be run
+  - [ ] Let you mark multiple to run at the same time
+
+
+- [ ] Handle multiple folders
+  - [ ] When not matched by any setup pattern, check inside the first children's folders
+  - [ ] When multiple children folders match, let you choose one folder
+  - [ ] Let you mark multiple folders to run at the same time
+
+- [ ] Handle multiple folders AND multiple environments at the same call
+- [ ] Write fully covered end-to-end tests
