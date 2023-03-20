@@ -16,7 +16,7 @@ def get_help():
   print("  create: create a new project\n") 
   print("  delete: delete a project\n") 
 
-def main(argv) -> int:
+def main(argv=sys.argv) -> int:
   if len(argv) < 2:
     selected_project = SelectProject(project_list_path)
     start_work_script = [scripts_path, selected_project["project_path"]]
