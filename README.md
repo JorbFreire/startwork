@@ -1,11 +1,63 @@
 # Start-Work
 
+<div style="display: flex; justify-content: center" >
+
+[
+  <kbd
+    style="
+      display: flex;
+      padding: 8px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    "
+    >
+    <img
+      src="assets/links/github.svg"
+      height="25"
+      style="margin-right: 8px;"
+    />
+    <span
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 14px;
+      "
+    >
+      Github
+    </span>
+  </kbd>
+](https://github.com/JorbFreire/startwork)
+
+[
+  <kbd
+    style="
+      display: flex;
+      padding: 8px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    "
+    >
+    <img
+      src="https://pypi.org/static/images/logo-small.2a411bc6.svg"
+      height="25"
+      style="margin-right: 8px;"
+    />
+    <span
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 14px;
+      "
+    >
+      Published at PyPi
+    </span>
+  </kbd>
+](https://pypi.org/project/startwork/)
+
+</div>
 Small CLI to easier start and swap between projects in different stacks.
-
-Published to [PyPi](https://pypi.org/project/startwork/)
-
-[Repo Link](https://github.com/JorbFreire/startwork)
-
 
 ## motivation
 
