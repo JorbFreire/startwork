@@ -1,62 +1,13 @@
 # Start-Work
 
-<div style="display: flex; justify-content: center" >
+![GitHub repo size](https://img.shields.io/github/repo-size/JorbFreire/startwork?style=plastic)
+[![Publish](https://github.com/JorbFreire/startwork/workflows/Publish/badge.svg)](https://github.com/JorbFreire/startwork/actions?query=workflow:"Publish")
+[![GitHub release](https://img.shields.io/github/release/JorbFreire/startwork?include_prereleases=&sort=semver&color=blue)](https://github.com/JorbFreire/startwork/releases/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+![OS - Linux](https://img.shields.io/badge/OS-Linux-blue?logo=linux&logoColor=white)
+[![dependency - StartWork](https://img.shields.io/badge/dependency-StartWork-blue?logo=python&logoColor=white)](https://pypi.org/project/StartWork)
+[![Github](https://img.shields.io/badge/Github-purple?logo=github)](https://github.com/JorbFreire/startwork)
 
-[
-  <kbd
-    style="
-      display: flex;
-      padding: 8px;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    "
-    >
-    <img
-      src="assets/links/github.svg"
-      height="25"
-      style="margin-right: 8px;"
-    />
-    <span
-      style="
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        font-size: 14px;
-      "
-    >
-      Github
-    </span>
-  </kbd>
-](https://github.com/JorbFreire/startwork)
-
-[
-  <kbd
-    style="
-      display: flex;
-      padding: 8px;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    "
-    >
-    <img
-      src="https://pypi.org/static/images/logo-small.2a411bc6.svg"
-      height="25"
-      style="margin-right: 8px;"
-    />
-    <span
-      style="
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        font-size: 14px;
-      "
-    >
-      Published at PyPi
-    </span>
-  </kbd>
-](https://pypi.org/project/startwork/)
-
-</div>
 Small CLI to easier start and swap between projects in different stacks.
 
 ## motivation
