@@ -1,5 +1,6 @@
 # Start-Work
 
+<!-- badges start -->
 ![GitHub repo size](https://img.shields.io/github/repo-size/JorbFreire/startwork?style=plastic)
 [![Publish](https://github.com/JorbFreire/startwork/workflows/Publish/badge.svg)](https://github.com/JorbFreire/startwork/actions?query=workflow:"Publish")
 [![GitHub release](https://img.shields.io/github/release/JorbFreire/startwork?include_prereleases=&sort=semver&color=blue)](https://github.com/JorbFreire/startwork/releases/)
@@ -7,6 +8,7 @@
 ![OS - Linux](https://img.shields.io/badge/OS-Linux-blue?logo=linux&logoColor=white)
 [![dependency - StartWork](https://img.shields.io/badge/dependency-StartWork-blue?logo=python&logoColor=white)](https://pypi.org/project/StartWork)
 [![Github](https://img.shields.io/badge/Github-purple?logo=github)](https://github.com/JorbFreire/startwork)
+<!-- badges end -->
 
 Small CLI to easier start and swap between projects in different stacks.
 
@@ -19,7 +21,7 @@ Usually, we just have to run two something like `pip install -r requirements.txt
  constantly switch contexts, even worse when working with multiple projects in
  multiple languages with totally different setups a couple of times a day.
 
-[Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) are great tools to handle this problem. Start Work
+[Docker](https://www.docker.com/) and [DockerCompose](https://docs.docker.com/compose/) are great tools to handle this problem. Start Work
  should not be a replacement for Docker either Docker compose and shall even
  work with both.
 

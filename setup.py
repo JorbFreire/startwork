@@ -2,6 +2,7 @@ from setuptools import setup, find_packages
 from startwork.constants.__version__ import __version__
 from os import path
 from codecs import open
+from setup_utils import clean_up_md
 
 here = path.abspath(path.dirname(__file__))
 
@@ -10,7 +11,7 @@ with open(path.join(here, "README.md"), encoding="utf-8") as fh:
 
 VERSION = __version__
 DESCRIPTION = 'Small CLI to easier start and swap between projects in different stacks.'
-LONG_DESCRIPTION = long_description
+LONG_DESCRIPTION = clean_up_md(long_description)
 
 setup(
     name="startwork",
