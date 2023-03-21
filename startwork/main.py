@@ -18,7 +18,7 @@ def get_help():
 
 def main(argv=sys.argv) -> int:
   if len(argv) < 2:
-    selected_project = SelectProject(project_list_path)
+    selected_project = SelectProject.run(project_list_path)
     start_work_script = [scripts_path, selected_project["project_path"]]
     requirementsPath = Path('requirements.txt')
 
@@ -41,7 +41,7 @@ def main(argv=sys.argv) -> int:
     return CreateProject.run(project_list_path)
 
   if option == "delete":
-    return DeleteProject(project_list_path)
+    return DeleteProject.run(project_list_path)
 
   if option == "--version":
     print(f'version: {__version__}\n')  
